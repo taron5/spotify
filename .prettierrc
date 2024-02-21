@@ -1,0 +1,13 @@
+{
+  "useTabs": false,
+  "semi": true,
+  "printWidth": 100,
+  "tabWidth": 2,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "jsxBracketSameLine": false,
+  "bracketSpacing": true,
+  "organizeImportsSkipDestructiveCodeActions": true,
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
