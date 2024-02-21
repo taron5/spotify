@@ -1,4 +1,4 @@
-import { initializeApp, getApps } from 'firebase-admin/app';
+import { initializeApp, getApps, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 
 const firebaseConfig = {
@@ -9,6 +9,10 @@ const firebaseConfig = {
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
 };
+const keys = JSON.parse(process.env.NEXT_PUBLIC_FIREBASE_SERVICE_ACCOUNT as string);
 
-export const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+export const app =
+  getApps().length === 0
+    ? initializeApp({ credential: cert(keys), ...firebaseConfig })
+    : getApps()[0];
 export const db = getFirestore(app);
